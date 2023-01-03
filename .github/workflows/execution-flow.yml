@@ -88,4 +88,12 @@ jobs:
     uses: ./.github/workflows/reuse-flow.yml
     with:
       artifact-name: calling
+    #secrets:
+    #  some-secret:  
+  print-reuslt:
+    needs: reuse
+    runs-on: ubuntu-latest
+    steps:
+       - name: output
+         run: echo ${{needs.reuse.outputs.result}}
               

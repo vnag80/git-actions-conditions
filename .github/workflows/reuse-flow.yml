@@ -7,9 +7,20 @@ on:
            required: false
            default: testing
            type: string
+    secrets:
+       some-secret:
+           required: false 
+    outputs:
+         result:
+            value: ${{jobs.reuse.outputs.stepresult}}             
 jobs:
+  outputs:
+      outcome:${{steps.result.outputs.stepresult}}
   reuse:
     runs-on: ubuntu-latest
     steps:
       - name: reuse test
-        run: echo ${{inputs.artifact-name}}
+        id: reult
+        run: |
+         echo ${{inputs.artifact-name}}
+         echo "::set-output name=stepresult::success"
