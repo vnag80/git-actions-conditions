@@ -75,3 +75,11 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  reprot:
+    needs: [lint,deploy]        
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: report error
+        run: | 
+            echo 'Error reported'
