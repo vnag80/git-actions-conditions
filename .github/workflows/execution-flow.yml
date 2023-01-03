@@ -76,6 +76,7 @@ jobs:
       - name: Deploy
         run: echo "Deploying..."
   reprot:
+    continue-on-error: true
     needs: [lint,deploy]        
     if: failure()
     runs-on: ubuntu-latest
