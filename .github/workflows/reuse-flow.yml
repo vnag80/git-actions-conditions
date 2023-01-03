@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: reuse test
-        id: reult
+        id: result
         run: |
          echo ${{inputs.artifact-name}}
          echo "::set-output name=stepresult::success"
